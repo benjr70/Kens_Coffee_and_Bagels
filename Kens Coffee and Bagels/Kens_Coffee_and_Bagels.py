@@ -2,8 +2,14 @@ from Tkinter import *
 from DrinkClass import Drink
 root = Tk()
 
-#global varibles needed kinda ugly but it works
+#global varibles
+CartLabel = Label()
+cartRemove = Button()
+checkout = Button()
+SubtotalLabel = Label()
 addonButtonsshown = False
+checkoutShowing = False
+subtotal = 0
 labelFont = ('verdana', 20, 'bold')
 
 #*****************************************************
@@ -50,6 +56,8 @@ CartCanvas.pack(side = LEFT)
 root.CartFrame = CartFrame = Frame(CartCanvas)
 CartFrame_id = CartCanvas.create_window(0,0, window = CartFrame, anchor = NW)
 
+
+
 #*****************************************************
 #This function puts all the all ons on screen and manages the add on counters
 #this gets called from Coffeeorder
@@ -66,35 +74,92 @@ def AddOnbuttons(currentDrink):
                 currentDrink.set_addWhiteCoco(False)
             WCcounter.config(text = currentDrink.get_WhiteCoco())
 
-        WhiteChcoLabel = Label(AddOnsFrame, text = "White Chocolate", padx = 174.5).grid(column = 1, row =0)
-        WCsub = Button(AddOnsFrame, text = "-", command = lambda: WCupdater(False)).grid(column = 0, row =1,sticky=NW)
+        WhiteChcoLabel = Label(AddOnsFrame, text = "White Chocolate", padx = 174.5)
+        WhiteChcoLabel.grid(column = 1, row =0)
+        WCsub = Button(AddOnsFrame, text = "-", command = lambda: WCupdater(False))
+        WCsub.grid(column = 0, row =1,sticky=NW)
         WCcounter = Label(AddOnsFrame, text = currentDrink.get_WhiteCoco())
         WCcounter.grid(column = 1, row =1)
-        WCAdd = Button(AddOnsFrame, text = "+", command = lambda: WCupdater(True)).grid(column = 2, row =1, sticky=NE)
-        
+        WCAdd = Button(AddOnsFrame, text = "+", command = lambda: WCupdater(True))
+        WCAdd.grid(column = 2, row =1, sticky=NE)
+
+        def removeAddOns(currentDrink):
+            global addonButtonsshown
+            addonButtonsshown = False
+            WhiteChcoLabel.grid_forget()
+            WCsub.grid_forget()
+            WCAdd.grid_forget()
+            WCcounter.grid_forget()
+            AddToCartButton.grid_forget()
+            AddToCart(currentDrink)
+
+        AddToCartButton = Button(AddOnsFrame, text = "Add To Cart", padx = 174.5, pady = 10, command = lambda: removeAddOns(currentDrink))
+        AddToCartButton.grid(column = 1, row = 14)
+
+def AddToCart(currentDrink):
+    global CartLabel
+    global cartRemove 
+    global checkout
+    global checkoutShowing
+    global subtotal
+    global SubtotalLabel
+    CartLabel = Label(CartFrame, text = currentDrink.GetCarttext())
+    CartLabel.pack()
+    cartRemove = Button(CartFrame, text = "Remove", command = lambda: removeFromCart(currentDrink.get_name(),currentDrink))
+    cartRemove.pack()
+    currentDrink.AddToCart(CartLabel, cartRemove)
+    subtotal += currentDrink.get_price()
+    if(len(currentDrink.cartList)>0):
+        if(checkoutShowing == False):
+            checkoutShowing = True
+            checkout = Button(CartFrame, text = "Checkout",padx = 210, pady = 10)
+            checkout.pack(side = BOTTOM)
+        SubtotalLabel.pack_forget()
+        SubtotalLabel = Label(CartFrame, text = "Total: $" + str(subtotal))
+        SubtotalLabel.config(text = "Total: $" + str(subtotal))
+        SubtotalLabel.pack(side = BOTTOM)
+
+def removeFromCart(DrinkName, currentDrink):
+    global CartLabel
+    global cartRemove 
+    global checkout
+    global checkoutShowing
+    global subtotal
+    global SubtotalLabel
+    CartLabel = currentDrink.get_label()
+    CartLabel.pack_forget()
+    cartRemove =currentDrink.get_button()
+    cartRemove.pack_forget()
+    subtotal -= currentDrink.get_price()
+    SubtotalLabel.pack_forget()
+    SubtotalLabel = Label(CartFrame, text = "Total: $" + str(subtotal))
+    SubtotalLabel.config(text = "Total: $" + str(subtotal))
+    SubtotalLabel.pack(side = BOTTOM)
+    currentDrink.cartList.remove(currentDrink)
+    if(len(currentDrink.cartList)<= 0):
+        SubtotalLabel.pack_forget()
+        checkout.pack_forget()
+        checkoutShowing = False
 
 
-#*****************************************************
-# function gets call when user clicks add to cart this then adds that item to the cart
-#*****************************************************
-def Cart():
-    item = Label(CartFrame, text = CoffeeName).pack()
-    if DarkCoco != 0:
-        subitem = Label(CartFrame, text = "Dark Chcolate ("+ str(DarkCoco) + ")").pack()
-
-def coffeeSelect(Name ,WhiteCoco ,DarkCoco ,MilkCoco ,Milk ,WhipCream ,Strawberry):
-    currentDrink = Drink(Name ,WhiteCoco ,DarkCoco ,MilkCoco ,Milk ,WhipCream ,Strawberry)
+#**************************************************************
+# instantiates a Drink objects and passes object to add ons
+#***************************************************************
+def coffeeSelect(Name, price ,WhiteCoco ,DarkCoco ,MilkCoco ,Milk ,WhipCream ,Strawberry):
+    currentDrink = Drink(Name, price ,WhiteCoco ,DarkCoco ,MilkCoco ,Milk ,WhipCream ,Strawberry)
     AddOnbuttons(currentDrink)
 
 #kinds of coffee buttons decleared and packed
-mocha = Button(coffeeFrame, text = "Mocha", padx = 210, pady = 10, command = lambda : coffeeSelect("Mocha",1,2,0,1,1,0))
+mocha = Button(coffeeFrame, text = "Mocha", padx = 210, pady = 10, command = lambda : coffeeSelect("Mocha", 3.50 ,1,2,0,1,1,0))
 mocha.pack(expand = YES, fill = X, side = TOP)
-latte = Button(coffeeFrame, text = "latte",pady = 10, command = lambda : coffeeSelect("Latte",0,2,0,1,1,0))
+latte = Button(coffeeFrame, text = "latte",pady = 10, command = lambda : coffeeSelect("Latte",3.50,0,2,0,1,1,0))
 latte.pack(expand = YES, fill = X, side = TOP)
-HotCoco = Button(coffeeFrame, text = "Hot Chocolate",pady = 10, command = lambda : coffeeSelect("Hot Chocolate",0,0,0,1,1,0))
+HotCoco = Button(coffeeFrame, text = "Hot Chocolate",pady = 10, command = lambda : coffeeSelect("Hot Chocolate",2.0,0,0,0,1,1,0))
 HotCoco.pack(expand = YES, fill = X, side = TOP)
-ChiTea = Button(coffeeFrame, text = "ChiTea",pady = 10, command = lambda : coffeeSelect("ChiTea",0,2,0,1,1,0))
+ChiTea = Button(coffeeFrame, text = "ChiTea",pady = 10, command = lambda : coffeeSelect("ChiTea",2.50,0,2,0,1,1,0))
 ChiTea.pack(expand = YES, fill = X, side = TOP)
+
+
 
 
 root.title("Kens Coffee and Bagels");
