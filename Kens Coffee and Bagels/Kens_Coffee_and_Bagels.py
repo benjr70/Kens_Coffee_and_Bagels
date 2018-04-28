@@ -159,9 +159,6 @@ HotCoco.pack(expand = YES, fill = X, side = TOP)
 ChiTea = Button(coffeeFrame, text = "ChiTea",pady = 10, command = lambda : coffeeSelect("ChiTea",2.50,0,2,0,1,1,0))
 ChiTea.pack(expand = YES, fill = X, side = TOP)
 
-
-
-
 root.title("Kens Coffee and Bagels");
 root.geometry("1400x849");
 mainloop()
