@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DrinkClass.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Kens_Coffee_and_Bagels.py" />
   </ItemGroup>
   <PropertyGroup>
