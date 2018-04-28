@@ -71,7 +71,7 @@ class Drink:
                 self.__actual__WhipCream -=1
 
     def get_WhipCream(self):
-        return self.__actual__Milk
+        return self.__actual__WhipCream
 
     def set_addStrawberry(self, add):
         if(add == True):
@@ -93,6 +93,36 @@ class Drink:
                 temp =  self.__actual__WhiteCoco - self.__default__WhiteCoco
                 carttext += "$" +  str(temp*0.10)
                 self.__price += temp*0.1;
+        if (self.__actual__DarkCoco != self.__default__DarkCoco):
+            carttext += "\nDark Chocolate(" + str(self.__actual__DarkCoco) + ")\t\t"
+            if(self.__actual__DarkCoco > self.__default__DarkCoco):
+                temp =  self.__actual__DarkCoco - self.__default__DarkCoco
+                carttext += "$" +  str(temp*0.10)
+                self.__price += temp*0.1;   
+        if (self.__actual__MilkCoco != self.__default__MilkCoco):
+            carttext += "\nMilk Chocolate(" + str(self.__actual__MilkCoco) + ")\t\t"
+            if(self.__actual__MilkCoco > self.__default__MilkCoco):
+                temp =  self.__actual__MilkCoco - self.__default__MilkCoco
+                carttext += "$" +  str(temp*0.10)
+                self.__price += temp*0.1;
+        if (self.__actual__Milk != self.__default__Milk):
+            carttext += "\nMilk(" + str(self.__actual__Milk) + ")\t\t\t"
+            if(self.__actual__Milk > self.__default__Milk):
+                temp =  self.__actual__Milk - self.__default__Milk
+                carttext += "$" +  str(temp*0.10)
+                self.__price += temp*0.1; 
+        if (self.__actual__WhipCream != self.__default__WhipCream):
+            carttext += "\nWhip Cream(" + str(self.__actual__WhipCream) + ")\t\t"
+            if(self.__actual__WhipCream > self.__default__WhipCream):
+                temp =  self.__actual__WhipCream - self.__default__WhipCream
+                carttext += "$" +  str(temp*0.10)
+                self.__price += temp*0.1; 
+        if (self.__actual__Strawberry != self.__default__Strawberry):
+            carttext += "\nStrawberry(" + str(self.__actual__Strawberry) + ")\t\t"
+            if(self.__actual__Strawberry > self.__default__Strawberry):
+                temp =  self.__actual__Strawberry - self.__default__Strawberry
+                carttext += "$" +  str(temp*0.10)
+                self.__price += temp*0.1;                                                        
         return carttext
 
     def AddToCart(self,button,label):

@@ -68,10 +68,7 @@ def AddOnbuttons(currentDrink):
         addonButtonsshown = True
 
         def WCupdater(add):
-            if(add == True):
-                currentDrink.set_addWhiteCoco(True)
-            else: 
-                currentDrink.set_addWhiteCoco(False)
+            currentDrink.set_addWhiteCoco(add)
             WCcounter.config(text = currentDrink.get_WhiteCoco())
 
         WhiteChcoLabel = Label(AddOnsFrame, text = "White Chocolate", padx = 174.5)
@@ -83,6 +80,71 @@ def AddOnbuttons(currentDrink):
         WCAdd = Button(AddOnsFrame, text = "+", command = lambda: WCupdater(True))
         WCAdd.grid(column = 2, row =1, sticky=NE)
 
+        def DCupdater(add):
+            currentDrink.set_addDarkCoco(add)
+            DCcounter.config(text = currentDrink.get_DarkCoco())
+
+        DarkChcoLabel = Label(AddOnsFrame, text = "Dark Chocolate", padx = 174.5)
+        DarkChcoLabel.grid(column = 1, row =2)
+        DCsub = Button(AddOnsFrame, text = "-", command = lambda: DCupdater(False))
+        DCsub.grid(column = 0, row =3,sticky=NW)
+        DCcounter = Label(AddOnsFrame, text = currentDrink.get_DarkCoco())
+        DCcounter.grid(column = 1, row =3)
+        DCAdd = Button(AddOnsFrame, text = "+", command = lambda: DCupdater(True))
+        DCAdd.grid(column = 2, row =3, sticky=NE)
+
+        def MCupdater(add):
+            currentDrink.set_addMilkCoco(add)
+            MCcounter.config(text = currentDrink.get_MilkCoco())
+
+        MilkChcoLabel = Label(AddOnsFrame, text = "Milk Chocolate", padx = 174.5)
+        MilkChcoLabel.grid(column = 1, row =4)
+        MCsub = Button(AddOnsFrame, text = "-", command = lambda: MCupdater(False))
+        MCsub.grid(column = 0, row =5,sticky=NW)
+        MCcounter = Label(AddOnsFrame, text = currentDrink.get_MilkCoco())
+        MCcounter.grid(column = 1, row =5)
+        MCAdd = Button(AddOnsFrame, text = "+", command = lambda:MCupdater(True))
+        MCAdd.grid(column = 2, row =5, sticky=NE)
+
+        def Mupdater(add):
+            currentDrink.set_addMilK(add)
+            Mcounter.config(text = currentDrink.get_Milk())
+
+        MilkLabel = Label(AddOnsFrame, text = "Milk", padx = 174.5)
+        MilkLabel.grid(column = 1, row =6)
+        Msub = Button(AddOnsFrame, text = "-", command = lambda: Mupdater(False))
+        Msub.grid(column = 0, row =7,sticky=NW)
+        Mcounter = Label(AddOnsFrame, text = currentDrink.get_Milk())
+        Mcounter.grid(column = 1, row =7)
+        MAdd = Button(AddOnsFrame, text = "+", command = lambda:Mupdater(True))
+        MAdd.grid(column = 2, row =7, sticky=NE)
+
+        def Whipcupdater(add):
+            currentDrink.set_addWhipCream(add)
+            Whipccounter.config(text = currentDrink.get_WhipCream())
+
+        WhipcLabel = Label(AddOnsFrame, text = "Whip Cream", padx = 174.5)
+        WhipcLabel.grid(column = 1, row =8)
+        Whipcsub = Button(AddOnsFrame, text = "-", command = lambda: Whipcupdater(False))
+        Whipcsub.grid(column = 0, row =9,sticky=NW)
+        Whipccounter = Label(AddOnsFrame, text = currentDrink.get_WhipCream())
+        Whipccounter.grid(column = 1, row =9)
+        WhipcAdd = Button(AddOnsFrame, text = "+", command = lambda:Whipcupdater(True))
+        WhipcAdd.grid(column = 2, row =9, sticky=NE)
+
+        def Strawupdater(add):
+            currentDrink.set_addStrawberry(add)
+            Strawcounter.config(text = currentDrink.get_Strawberry())
+
+        StrawLabel = Label(AddOnsFrame, text = "Strawberry", padx = 174.5)
+        StrawLabel.grid(column = 1, row =10)
+        Strawsub = Button(AddOnsFrame, text = "-", command = lambda: Strawupdater(False))
+        Strawsub.grid(column = 0, row =11,sticky=NW)
+        Strawcounter = Label(AddOnsFrame, text = currentDrink.get_Strawberry())
+        Strawcounter.grid(column = 1, row =11)
+        StrawAdd = Button(AddOnsFrame, text = "+", command = lambda:Strawupdater(True))
+        StrawAdd.grid(column = 2, row =11, sticky=NE)
+
         def removeAddOns(currentDrink):
             global addonButtonsshown
             addonButtonsshown = False
@@ -90,6 +152,26 @@ def AddOnbuttons(currentDrink):
             WCsub.grid_forget()
             WCAdd.grid_forget()
             WCcounter.grid_forget()
+            DarkChcoLabel.grid_forget()
+            DCsub.grid_forget()
+            DCAdd.grid_forget()
+            DCcounter.grid_forget()
+            MilkChcoLabel.grid_forget()
+            MCsub.grid_forget()
+            MCAdd.grid_forget()
+            MCcounter.grid_forget()
+            MilkLabel.grid_forget()
+            Msub.grid_forget()
+            MAdd.grid_forget()
+            Mcounter.grid_forget()
+            WhipcLabel.grid_forget()
+            Whipcsub.grid_forget()
+            WhipcAdd.grid_forget()
+            Whipccounter.grid_forget()
+            StrawLabel.grid_forget()
+            Strawsub.grid_forget()
+            Strawcounter.grid_forget()
+            StrawAdd.grid_forget()
             AddToCartButton.grid_forget()
             AddToCart(currentDrink)
 
