@@ -10,11 +10,12 @@ class Drink:
         self.__actual__WhiteCoco = self.__default__WhiteCoco
 
             
-    def set_addWhiteCoco(self):
-        self.__actual__WhiteCoco +=1
-    def set_SubWhiteCoco(self):
-        if(__actual__WhiteCoco <= 0):
-            self.__actual__WhiteCoco -=1
-            print __actual__WhiteCoco
+    def set_addWhiteCoco(self, add):
+        if(add == True):
+            self.__actual__WhiteCoco +=1
+        else:
+            if(self.__actual__WhiteCoco > 0):
+                self.__actual__WhiteCoco -=1
+
     def get_WhiteCoco(self):
         return self.__actual__WhiteCoco

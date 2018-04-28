@@ -59,11 +59,18 @@ def AddOnbuttons(currentDrink):
     if (addonButtonsshown == False):
         addonButtonsshown = True
 
+        def WCupdater(add):
+            if(add == True):
+                currentDrink.set_addWhiteCoco(True)
+            else: 
+                currentDrink.set_addWhiteCoco(False)
+            WCcounter.config(text = currentDrink.get_WhiteCoco())
+
         WhiteChcoLabel = Label(AddOnsFrame, text = "White Chocolate", padx = 174.5).grid(column = 1, row =0)
-        WCsub = Button(AddOnsFrame, text = "-", command = lambda: currentDrink.set_SubWhiteCoco()).grid(column = 0, row =1,sticky=NW)
+        WCsub = Button(AddOnsFrame, text = "-", command = lambda: WCupdater(False)).grid(column = 0, row =1,sticky=NW)
         WCcounter = Label(AddOnsFrame, text = currentDrink.get_WhiteCoco())
         WCcounter.grid(column = 1, row =1)
-        WCAdd = Button(AddOnsFrame, text = "+", command = lambda:currentDrink.set_addWhiteCoco()).grid(column = 2, row =1, sticky=NE)
+        WCAdd = Button(AddOnsFrame, text = "+", command = lambda: WCupdater(True)).grid(column = 2, row =1, sticky=NE)
         
 
 
@@ -80,11 +87,11 @@ def coffeeSelect(Name ,WhiteCoco ,DarkCoco ,MilkCoco ,Milk ,WhipCream ,Strawberr
     AddOnbuttons(currentDrink)
 
 #kinds of coffee buttons decleared and packed
-mocha = Button(coffeeFrame, text = "Mocha", padx = 210, pady = 10, command = lambda : coffeeSelect("Mocha",0,2,0,1,1,0))
+mocha = Button(coffeeFrame, text = "Mocha", padx = 210, pady = 10, command = lambda : coffeeSelect("Mocha",1,2,0,1,1,0))
 mocha.pack(expand = YES, fill = X, side = TOP)
 latte = Button(coffeeFrame, text = "latte",pady = 10, command = lambda : coffeeSelect("Latte",0,2,0,1,1,0))
 latte.pack(expand = YES, fill = X, side = TOP)
-HotCoco = Button(coffeeFrame, text = "Hot Chocolate",pady = 10, command = lambda : coffeeSelect("Hot Chocolate",0,2,0,1,1,0))
+HotCoco = Button(coffeeFrame, text = "Hot Chocolate",pady = 10, command = lambda : coffeeSelect("Hot Chocolate",0,0,0,1,1,0))
 HotCoco.pack(expand = YES, fill = X, side = TOP)
 ChiTea = Button(coffeeFrame, text = "ChiTea",pady = 10, command = lambda : coffeeSelect("ChiTea",0,2,0,1,1,0))
 ChiTea.pack(expand = YES, fill = X, side = TOP)
