@@ -187,21 +187,21 @@ def AddToCart(currentDrink):
     global SubtotalLabel
     CartLabel = Label(CartFrame, text = currentDrink.GetCarttext())
     CartLabel.pack()
-    cartRemove = Button(CartFrame, text = "Remove", command = lambda: removeFromCart(currentDrink.get_name(),currentDrink))
+    cartRemove = Button(CartFrame, text = "Remove", command = lambda: removeFromCart(currentDrink))
     cartRemove.pack()
     currentDrink.AddToCart(CartLabel, cartRemove)
     subtotal += currentDrink.get_price()
     if(len(currentDrink.cartList)>0):
         if(checkoutShowing == False):
             checkoutShowing = True
-            checkout = Button(CartFrame, text = "Checkout",padx = 210, pady = 10)
+            checkout = Button(CartFrame, text = "Checkout",padx = 210, pady = 10, command = lambda: checkoutDisplay(currentDrink, subtotal))
             checkout.pack(side = BOTTOM)
         SubtotalLabel.pack_forget()
         SubtotalLabel = Label(CartFrame, text = "Total: $" + str(subtotal))
         SubtotalLabel.config(text = "Total: $" + str(subtotal))
         SubtotalLabel.pack(side = BOTTOM)
 
-def removeFromCart(DrinkName, currentDrink):
+def removeFromCart(currentDrink):
     global CartLabel
     global cartRemove 
     global checkout
@@ -224,6 +224,34 @@ def removeFromCart(DrinkName, currentDrink):
         checkoutShowing = False
 
 
+def checkoutDisplay(currentDrink, total):
+    checkoutdialog = Toplevel() 
+    checkoutdialog.geometry("1400x849")
+    optionsLabel = Label(checkoutdialog,  text = "Payment Options")
+    optionsLabel.config(font = labelFont)
+    optionsLabel.grid(column = 0, row = 0)
+    Cash = Button(checkoutdialog, text = "Cash", padx = 140, pady = 10)
+    Cash.grid(column = 0, row = 1)
+    Creditcardbutton = Button(checkoutdialog, text = "Credit Card", padx = 123, pady = 10)
+    Creditcardbutton.grid(column = 0, row = 2)
+    debitcardbutton = Button(checkoutdialog, text = "Debit Card", padx = 125, pady = 10)
+    debitcardbutton.grid(column = 0, row = 3)
+    applepaybutton = Button(checkoutdialog, text = "Apple Samsung Pay", padx = 100, pady = 10)
+    applepaybutton.grid(column = 0, row = 4)
+    rowindex = 1
+    ordertitle = Label(checkoutdialog, text = "Your Order")
+    ordertitle.config(font = labelFont)
+    ordertitle.grid(column = 1, row = 0)
+    for x in currentDrink.cartList:
+        cart = Label(checkoutdialog, text = x.get_cartText())
+        cart.grid(column = 1, row = rowindex)
+        rowindex +=1
+    totallabel = Label(checkoutdialog, text = "$" + str(total))
+    rowindex +=1 
+    totallabel.grid(column = 1, row = rowindex)
+
+
+
 #**************************************************************
 # instantiates a Drink objects and passes object to add ons
 #***************************************************************
@@ -240,6 +268,7 @@ HotCoco = Button(coffeeFrame, text = "Hot Chocolate",pady = 10, command = lambda
 HotCoco.pack(expand = YES, fill = X, side = TOP)
 ChiTea = Button(coffeeFrame, text = "ChiTea",pady = 10, command = lambda : coffeeSelect("ChiTea",2.50,0,2,0,1,1,0))
 ChiTea.pack(expand = YES, fill = X, side = TOP)
+
 
 root.title("Kens Coffee and Bagels");
 root.geometry("1400x849");

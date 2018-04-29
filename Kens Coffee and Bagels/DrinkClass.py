@@ -19,9 +19,13 @@ class Drink:
         self.__actual__Strawberry = self.__default__Strawberry
         self.__button = Button()
         self.__label = Label()
+        self.__cartText = ""
             
     def get_name(self):
         return self.__name
+
+    def get_cartText(self):
+        return self.__cartText
 
     def set_addWhiteCoco(self, add):
         if(add == True):
@@ -86,7 +90,6 @@ class Drink:
     def GetCarttext(self):
         carttext = self.__name
         carttext += "\t\t$" + str(self.__price)
-        Drink.cartList.append(self)
         if (self.__actual__WhiteCoco != self.__default__WhiteCoco):
             carttext += "\nWhite Chocolate(" + str(self.__actual__WhiteCoco) + ")\t"
             if(self.__actual__WhiteCoco > self.__default__WhiteCoco):
@@ -122,10 +125,12 @@ class Drink:
             if(self.__actual__Strawberry > self.__default__Strawberry):
                 temp =  self.__actual__Strawberry - self.__default__Strawberry
                 carttext += "$" +  str(temp*0.10)
-                self.__price += temp*0.1;                                                        
+                self.__price += temp*0.1;    
+        self.__cartText = carttext                                                    
         return carttext
 
     def AddToCart(self,button,label):
+        Drink.cartList.append(self)
         self.__button = button
         self.__label = label
 
