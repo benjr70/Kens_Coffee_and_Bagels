@@ -72,78 +72,78 @@ def AddOnbuttons(currentDrink):
             currentDrink.set_addWhiteCoco(add)
             WCcounter.config(text = currentDrink.get_WhiteCoco())
 
-        WhiteChcoLabel = Label(AddOnsFrame, text = "White Chocolate", padx = 174.5)
+        WhiteChcoLabel = Label(AddOnsFrame, text = "White Chocolate", padx = 145)
         WhiteChcoLabel.grid(column = 1, row =0)
-        WCsub = Button(AddOnsFrame, text = "-", command = lambda: WCupdater(False))
+        WCsub = Button(AddOnsFrame, text = "-", width = 5,height = 2, command = lambda: WCupdater(False))
         WCsub.grid(column = 0, row =1,sticky=NW)
         WCcounter = Label(AddOnsFrame, text = currentDrink.get_WhiteCoco())
         WCcounter.grid(column = 1, row =1)
-        WCAdd = Button(AddOnsFrame, text = "+", command = lambda: WCupdater(True))
+        WCAdd = Button(AddOnsFrame, text = "+",width = 5,height = 2, command = lambda: WCupdater(True))
         WCAdd.grid(column = 2, row =1, sticky=NE)
 
         def DCupdater(add):
             currentDrink.set_addDarkCoco(add)
             DCcounter.config(text = currentDrink.get_DarkCoco())
 
-        DarkChcoLabel = Label(AddOnsFrame, text = "Dark Chocolate", padx = 174.5)
+        DarkChcoLabel = Label(AddOnsFrame, text = "Dark Chocolate")
         DarkChcoLabel.grid(column = 1, row =2)
-        DCsub = Button(AddOnsFrame, text = "-", command = lambda: DCupdater(False))
+        DCsub = Button(AddOnsFrame, text = "-", width = 5,height = 2, command = lambda: DCupdater(False))
         DCsub.grid(column = 0, row =3,sticky=NW)
         DCcounter = Label(AddOnsFrame, text = currentDrink.get_DarkCoco())
         DCcounter.grid(column = 1, row =3)
-        DCAdd = Button(AddOnsFrame, text = "+", command = lambda: DCupdater(True))
+        DCAdd = Button(AddOnsFrame, text = "+", width = 5,height = 2, command = lambda: DCupdater(True))
         DCAdd.grid(column = 2, row =3, sticky=NE)
 
         def MCupdater(add):
             currentDrink.set_addMilkCoco(add)
             MCcounter.config(text = currentDrink.get_MilkCoco())
 
-        MilkChcoLabel = Label(AddOnsFrame, text = "Milk Chocolate", padx = 174.5)
+        MilkChcoLabel = Label(AddOnsFrame, text = "Milk Chocolate")
         MilkChcoLabel.grid(column = 1, row =4)
-        MCsub = Button(AddOnsFrame, text = "-", command = lambda: MCupdater(False))
+        MCsub = Button(AddOnsFrame, text = "-", width = 5,height = 2, command = lambda: MCupdater(False))
         MCsub.grid(column = 0, row =5,sticky=NW)
         MCcounter = Label(AddOnsFrame, text = currentDrink.get_MilkCoco())
         MCcounter.grid(column = 1, row =5)
-        MCAdd = Button(AddOnsFrame, text = "+", command = lambda:MCupdater(True))
+        MCAdd = Button(AddOnsFrame, text = "+", width = 5,height = 2, command = lambda:MCupdater(True))
         MCAdd.grid(column = 2, row =5, sticky=NE)
 
         def Mupdater(add):
             currentDrink.set_addMilK(add)
             Mcounter.config(text = currentDrink.get_Milk())
 
-        MilkLabel = Label(AddOnsFrame, text = "Milk", padx = 174.5)
+        MilkLabel = Label(AddOnsFrame, text = "Milk")
         MilkLabel.grid(column = 1, row =6)
-        Msub = Button(AddOnsFrame, text = "-", command = lambda: Mupdater(False))
+        Msub = Button(AddOnsFrame, text = "-", width = 5,height = 2, command = lambda: Mupdater(False))
         Msub.grid(column = 0, row =7,sticky=NW)
         Mcounter = Label(AddOnsFrame, text = currentDrink.get_Milk())
         Mcounter.grid(column = 1, row =7)
-        MAdd = Button(AddOnsFrame, text = "+", command = lambda:Mupdater(True))
+        MAdd = Button(AddOnsFrame, text = "+", width = 5,height = 2, command = lambda:Mupdater(True))
         MAdd.grid(column = 2, row =7, sticky=NE)
 
         def Whipcupdater(add):
             currentDrink.set_addWhipCream(add)
             Whipccounter.config(text = currentDrink.get_WhipCream())
 
-        WhipcLabel = Label(AddOnsFrame, text = "Whip Cream", padx = 174.5)
+        WhipcLabel = Label(AddOnsFrame, text = "Whip Cream")
         WhipcLabel.grid(column = 1, row =8)
-        Whipcsub = Button(AddOnsFrame, text = "-", command = lambda: Whipcupdater(False))
+        Whipcsub = Button(AddOnsFrame, text = "-", width = 5,height = 2, command = lambda: Whipcupdater(False))
         Whipcsub.grid(column = 0, row =9,sticky=NW)
         Whipccounter = Label(AddOnsFrame, text = currentDrink.get_WhipCream())
         Whipccounter.grid(column = 1, row =9)
-        WhipcAdd = Button(AddOnsFrame, text = "+", command = lambda:Whipcupdater(True))
+        WhipcAdd = Button(AddOnsFrame, text = "+", width = 5,height = 2, command = lambda:Whipcupdater(True))
         WhipcAdd.grid(column = 2, row =9, sticky=NE)
 
         def Strawupdater(add):
             currentDrink.set_addStrawberry(add)
             Strawcounter.config(text = currentDrink.get_Strawberry())
 
-        StrawLabel = Label(AddOnsFrame, text = "Strawberry", padx = 174.5)
+        StrawLabel = Label(AddOnsFrame, text = "Strawberry")
         StrawLabel.grid(column = 1, row =10)
-        Strawsub = Button(AddOnsFrame, text = "-", command = lambda: Strawupdater(False))
+        Strawsub = Button(AddOnsFrame, text = "-", width = 5,height = 2, command = lambda: Strawupdater(False))
         Strawsub.grid(column = 0, row =11,sticky=NW)
         Strawcounter = Label(AddOnsFrame, text = currentDrink.get_Strawberry())
         Strawcounter.grid(column = 1, row =11)
-        StrawAdd = Button(AddOnsFrame, text = "+", command = lambda:Strawupdater(True))
+        StrawAdd = Button(AddOnsFrame, text = "+", width = 5,height = 2, command = lambda:Strawupdater(True))
         StrawAdd.grid(column = 2, row =11, sticky=NE)
 
         def removeAddOns(currentDrink):
@@ -176,8 +176,8 @@ def AddOnbuttons(currentDrink):
             AddToCartButton.grid_forget()
             AddToCart(currentDrink)
 
-        AddToCartButton = Button(AddOnsFrame, text = "Add To Cart", padx = 174.5, pady = 10, command = lambda: removeAddOns(currentDrink))
-        AddToCartButton.grid(column = 1, row = 14)
+        AddToCartButton = Button(AddOnsFrame, text = "Add To Cart",padx = 200, pady = 10, command = lambda: removeAddOns(currentDrink))
+        AddToCartButton.grid(column = 0, row = 14, columnspan = 3)
 
 def AddToCart(currentDrink):
     global CartLabel
@@ -224,7 +224,9 @@ def removeFromCart(currentDrink):
         checkout.pack_forget()
         checkoutShowing = False
 
-
+#***********************************************
+#function checkout screen
+#***********************************************
 def checkoutDisplay(currentDrink, total):
     checkoutdialog = Toplevel() 
     checkoutdialog.geometry("1400x849")
@@ -250,6 +252,9 @@ def checkoutDisplay(currentDrink, total):
     totallabel = Label(checkoutdialog, text = "$" + str(total))
     rowindex +=1 
     totallabel.grid(column = 1, row = rowindex)
+    #***********************************************
+    #function for credit card screen
+    #***********************************************
     def CreditCardScreen(currentDrink, total):
         CreditCard = Toplevel()
         CreditCard.geometry("1400x849")
@@ -269,8 +274,53 @@ def checkoutDisplay(currentDrink, total):
         drawingboard = Canvas(CreditCard, width = 1000, height = 250, bg = 'white')
         drawingboard.grid(column = 2, row = 2)
         mouse = Pencial(drawingboard)
+  
+        Preceipt = Button(CreditCard, text = "Print Receipt")
+        Preceipt.grid(column = 2, row = 3, sticky = W)
+        EMreceipt = Button(CreditCard, text = "Email Receipt")
+        EMreceipt.grid(column = 2, row = 3)
+        Noreceipt = Button(CreditCard, text = "No Receipt")
+        Noreceipt.grid(column = 2, row = 3, sticky = E)
 
-
+        emaillable = Label(CreditCard, text = "e-mail")
+        emaillable.grid(column = 2, row = 4, sticky = W)
+        emailTB = Text(CreditCard,width = 115, height = 1)
+        emailTB.grid(column = 2, row = 4, sticky = E)
+        tip = total*1.15
+        tip15 = Button(CreditCard, text = "15% tip: " + str(tip))
+        tip15.grid(column = 2, row = 5, sticky = W)
+        tip = total*1.25
+        tip25 = Button(CreditCard, text = "25% tip: " + str(tip))
+        tip25.grid(column = 2, row = 5)
+        customtip = Button(CreditCard, text = "Custom Tip")
+        customtip.grid(column = 2, row = 5, sticky = E)
+        Ctip = Text(CreditCard, width = 5,height = 1)
+        Ctip.grid(column = 3, row = 5, sticky = W)
+        
+        donebutton = Button(CreditCard, text = "Done", command = lambda: Done(currentDrink))
+        donebutton.grid(column = 2, row = 6)
+        
+        def Done(currentDrink):
+            count = 0
+            global CartLabel
+            global cartRemove 
+            global checkout
+            global checkoutShowing
+            global subtotal
+            global SubtotalLabel
+            for x in currentDrink.cartList:
+                CartLabel = x.get_label()
+                CartLabel.pack_forget()
+                cartRemove =x.get_button()
+                cartRemove.pack_forget()
+                subtotal -= x.get_price()
+                SubtotalLabel.pack_forget()
+            currentDrink.deletcart()
+            subtotal = 0
+            checkout.pack_forget()
+            checkoutShowing = False
+            CreditCard.withdraw()
+            checkoutdialog.withdraw()
 
 
 #**************************************************************

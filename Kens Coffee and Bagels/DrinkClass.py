@@ -134,6 +134,9 @@ class Drink:
         self.__button = button
         self.__label = label
 
+    def deletcart(self):
+         Drink.cartList = []
+
     def get_button(self):
         return self.__button
 
