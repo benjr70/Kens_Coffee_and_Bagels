@@ -1,5 +1,6 @@
 from Tkinter import *
 from DrinkClass import Drink
+from draw import Pencial
 root = Tk()
 
 #global varibles
@@ -232,7 +233,7 @@ def checkoutDisplay(currentDrink, total):
     optionsLabel.grid(column = 0, row = 0)
     Cash = Button(checkoutdialog, text = "Cash", padx = 140, pady = 10)
     Cash.grid(column = 0, row = 1)
-    Creditcardbutton = Button(checkoutdialog, text = "Credit Card", padx = 123, pady = 10)
+    Creditcardbutton = Button(checkoutdialog, text = "Credit Card", command = lambda: CreditCardScreen(currentDrink, total), padx = 123, pady = 10)
     Creditcardbutton.grid(column = 0, row = 2)
     debitcardbutton = Button(checkoutdialog, text = "Debit Card", padx = 125, pady = 10)
     debitcardbutton.grid(column = 0, row = 3)
@@ -249,6 +250,26 @@ def checkoutDisplay(currentDrink, total):
     totallabel = Label(checkoutdialog, text = "$" + str(total))
     rowindex +=1 
     totallabel.grid(column = 1, row = rowindex)
+    def CreditCardScreen(currentDrink, total):
+        CreditCard = Toplevel()
+        CreditCard.geometry("1400x849")
+        ordertitle = Label(CreditCard, text = "Your Order")
+        ordertitle.config(font = labelFont)
+        ordertitle.grid(column = 1, row = 0)
+        rowindex = 1
+        for x in currentDrink.cartList:
+            cart = Label(CreditCard, text = x.get_cartText())
+            cart.grid(column = 1, row = rowindex)
+            rowindex +=1
+        totallabel = Label(CreditCard, text = "$" + str(total))
+        rowindex +=1 
+        totallabel.grid(column = 1, row = rowindex)
+        signherelabel = Label(CreditCard, text = "Sign Here")
+        signherelabel.grid(column = 2, row = 1)
+        drawingboard = Canvas(CreditCard, width = 1000, height = 250, bg = 'white')
+        drawingboard.grid(column = 2, row = 2)
+        mouse = Pencial(drawingboard)
+
 
 
 
