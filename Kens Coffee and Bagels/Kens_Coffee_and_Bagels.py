@@ -245,7 +245,7 @@ def checkoutDisplay(currentDrink, total):
     Creditcardbutton.grid(column = 0, row = 2)
     debitcardbutton = Button(checkoutdialog, text = "Debit Card", command = lambda: DebitCard(currentDrink,total), padx = 125, pady = 10)
     debitcardbutton.grid(column = 0, row = 3)
-    applepaybutton = Button(checkoutdialog, text = "Apple Samsung Pay",padx = 100, pady = 10)
+    applepaybutton = Button(checkoutdialog, text = "Apple Samsung Pay",padx = 100, pady = 10, command = lambda: applepay(currentDrink))
     applepaybutton.grid(column = 0, row = 4)
     rowindex = 1
     ordertitle = Label(checkoutdialog, text = "Your Order")
@@ -264,6 +264,15 @@ def checkoutDisplay(currentDrink, total):
     totallabel = Label(checkoutdialog, text="Grand Total: $" + str(round(total,2)))
     rowindex += 1
     totallabel.grid(column=1, row=rowindex)
+    def applepay(currentDrink):
+        applepaywidow = Toplevel()
+        applepaywidow.geometry("400x150")
+        message = Label(applepaywidow, text = "Please Tap Device Now")
+        message.config(font = labelFont)
+        message.pack()
+        donebutton = Button(applepaywidow, text = "Done",width = 15, height = 5, command = lambda: Done(currentDrink, applepaywidow))
+        donebutton.pack()
+
     #***********************************************
     #function for credit card screen
     #***********************************************
