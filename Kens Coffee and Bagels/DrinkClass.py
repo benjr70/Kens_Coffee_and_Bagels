@@ -5,6 +5,8 @@ class Drink:
     def __init__(self,Name = "",price = 0,WhiteCoco = 0,DarkCoco = 0,MilkCoco = 0,Milk = 0,WhipCream = 0,Strawberry = 0):
         self.__name = Name
         self.__price = price
+        self.__decalf = 0
+        self.__size = "small"
         self.__default__WhiteCoco = WhiteCoco 
         self.__default__DarkCoco = DarkCoco 
         self.__default__MilkCoco = MilkCoco  
@@ -26,6 +28,15 @@ class Drink:
 
     def get_cartText(self):
         return self.__cartText
+
+    def get_decalf(self):
+        return self.__decalf
+
+    def get_size(self):
+        return self.__size
+
+    def set_size(self, size):
+        self.__size = size
 
     def set_addWhiteCoco(self, add):
         if(add == True):
