@@ -296,11 +296,11 @@ def checkoutDisplay(currentDrink, total):
         drawingboard.grid(column = 2, row = 2)
         mouse = Pencial(drawingboard)
   
-        Preceipt = Button(CreditCard, text = "Print Receipt")
+        Preceipt = Button(CreditCard, text = "Print Receipt",width = 10, height = 3)
         Preceipt.grid(column = 2, row = 3, sticky = W)
-        EMreceipt = Button(CreditCard, text = "Email Receipt")
+        EMreceipt = Button(CreditCard, text = "Email Receipt",width = 10, height = 3)
         EMreceipt.grid(column = 2, row = 3)
-        Noreceipt = Button(CreditCard, text = "No Receipt")
+        Noreceipt = Button(CreditCard, text = "No Receipt",width = 10, height = 3)
         Noreceipt.grid(column = 2, row = 3, sticky = E)
 
         emaillable = Label(CreditCard, text = "e-mail")
@@ -308,17 +308,17 @@ def checkoutDisplay(currentDrink, total):
         emailTB = Text(CreditCard,width = 115, height = 1)
         emailTB.grid(column = 2, row = 4, sticky = E)
         tip = total*1.15
-        tip15 = Button(CreditCard, text = "15% tip: " + str(tip))
+        tip15 = Button(CreditCard, text = "15% tip: " + str(tip),width = 10, height = 3)
         tip15.grid(column = 2, row = 5, sticky = W)
         tip = total*1.25
-        tip25 = Button(CreditCard, text = "25% tip: " + str(tip))
+        tip25 = Button(CreditCard, text = "25% tip: " + str(tip),width = 10, height = 3)
         tip25.grid(column = 2, row = 5)
-        customtip = Button(CreditCard, text = "Custom Tip")
+        customtip = Button(CreditCard, text = "Custom Tip",width = 10, height = 3)
         customtip.grid(column = 2, row = 5, sticky = E)
         Ctip = Text(CreditCard, width = 5,height = 1)
         Ctip.grid(column = 3, row = 5, sticky = W)
         
-        donebutton = Button(CreditCard, text = "Done", command = lambda: Done(currentDrink, CreditCard))
+        donebutton = Button(CreditCard, text = "Done",width = 10, height = 3, command = lambda: Done(currentDrink, CreditCard))
         donebutton.grid(column = 2, row = 6)
 
     def DebitCard(currentDrink,total):
@@ -369,27 +369,27 @@ def checkoutDisplay(currentDrink, total):
         num0 = Button(numpad, text = '0', width = 5, height = 3, command = lambda: updatepin("0"))
         num0.grid(column = 1, row = 3)
 
-        Preceipt = Button(DebitCardwindow, text = "Print Receipt")
+        Preceipt = Button(DebitCardwindow, text = "Print Receipt",width = 10, height = 3)
         Preceipt.grid(column = 2, row = 5, sticky = W)
-        EMreceipt = Button(DebitCardwindow, text = "Email Receipt")
+        EMreceipt = Button(DebitCardwindow, text = "Email Receipt",width = 10, height = 3)
         EMreceipt.grid(column = 2, row = 5)
-        Noreceipt = Button(DebitCardwindow, text = "No Receipt")
+        Noreceipt = Button(DebitCardwindow, text = "No Receipt",width = 10, height = 3)
         Noreceipt.grid(column = 2, row = 5, sticky = E)
         emaillable = Label(DebitCardwindow, text = "e-mail")
         emaillable.grid(column = 2, row = 6, sticky = W)
         emailTB = Text(DebitCardwindow,width = 115, height = 1)
         emailTB.grid(column = 2, row = 6, sticky = E)
         tip = total*1.15
-        tip15 = Button(DebitCardwindow, text = "15% tip: " + str(tip))
+        tip15 = Button(DebitCardwindow, text = "15% tip: " + str(tip),width = 10, height = 3)
         tip15.grid(column = 2, row = 7, sticky = W)
         tip = total*1.25
-        tip25 = Button(DebitCardwindow, text = "25% tip: " + str(tip))
+        tip25 = Button(DebitCardwindow, text = "25% tip: " + str(tip),width = 10, height = 3)
         tip25.grid(column = 2, row = 7)
         customtip = Button(DebitCardwindow, text = "Custom Tip")
         customtip.grid(column = 2, row = 6, sticky = E)
         Ctip = Text(DebitCardwindow, width = 5,height = 1)
         Ctip.grid(column = 3, row = 7, sticky = W)
-        donebutton = Button(DebitCardwindow, text = "Done", command = lambda: Done(currentDrink, DebitCardwindow))
+        donebutton = Button(DebitCardwindow, text = "Done",width = 10, height = 3, command = lambda: Done(currentDrink, DebitCardwindow))
         donebutton.grid(column = 2, row = 8)
 
     def Cash(currentDrink,total):
@@ -447,7 +447,7 @@ def checkoutDisplay(currentDrink, total):
         ChangeLable.config(font = labelFont)
         ChangeLable.grid(column = 2, row = 7)
 
-        donebutton = Button(Cashwindow, text = "Done", command = lambda: Done(currentDrink, Cashwindow))
+        donebutton = Button(Cashwindow, text = "Done",width = 10, height = 3, command = lambda: Done(currentDrink, Cashwindow))
         donebutton.grid(column = 2, row = 8)
     def Done(currentDrink,paymentwindow):
         count = 0
