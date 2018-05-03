@@ -6,7 +6,8 @@ class Drink:
         self.__name = Name
         self.__price = price
         self.__decalf = 0
-        self.__size = "small"
+        self.__size = StringVar()
+        self.__size_premium = 0
         self.__default__WhiteCoco = WhiteCoco 
         self.__default__DarkCoco = DarkCoco 
         self.__default__MilkCoco = MilkCoco  
@@ -33,7 +34,7 @@ class Drink:
         return self.__decalf
 
     def get_size(self):
-        return self.__size
+        return self.__size.get()
 
     def set_size(self, size):
         self.__size = size
@@ -98,9 +99,16 @@ class Drink:
     def get_Strawberry(self):
         return self.__actual__Strawberry
 
+    def SizeCost(self):
+        # update size cost
+        if self.__size.get() == "medium":
+            self.__size_premium = 1
+        elif self.__size.get() == "large":
+            self.__size_premium = 2
     def GetCarttext(self):
-        carttext = self.__name
-        carttext += "\t\t$" + str(self.__price) + "\t\t"
+        self.SizeCost()
+        carttext = self.__name + " ("+self.__size.get()+")"
+        carttext += "\t\t$" + str(self.__price+self.__size_premium) + "\t\t"
         if (self.__actual__WhiteCoco != self.__default__WhiteCoco):
             carttext += "\n-White Chocolate(" + str(self.__actual__WhiteCoco) + ")\t"
             if(self.__actual__WhiteCoco > self.__default__WhiteCoco):
@@ -167,4 +175,5 @@ class Drink:
         return self.__label
 
     def get_price(self):
-        return self.__price
+        self.SizeCost()
+        return self.__price+self.__size_premium
