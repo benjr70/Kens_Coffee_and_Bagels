@@ -11,6 +11,7 @@ SubtotalLabel = Label()
 addonButtonsshown = False
 checkoutShowing = False
 subtotal = 0
+amountentered = ""
 pin = ""
 labelFont = ('verdana', 20, 'bold')
 
@@ -234,13 +235,13 @@ def checkoutDisplay(currentDrink, total):
     optionsLabel = Label(checkoutdialog,  text = "Payment Options")
     optionsLabel.config(font = labelFont)
     optionsLabel.grid(column = 0, row = 0)
-    Cash = Button(checkoutdialog, text = "Cash", padx = 140, pady = 10)
+    Cash = Button(checkoutdialog, text = "Cash", padx = 140, pady = 10,command = lambda:  Cash(currentDrink,total))
     Cash.grid(column = 0, row = 1)
     Creditcardbutton = Button(checkoutdialog, text = "Credit Card", command = lambda: CreditCardScreen(currentDrink, total), padx = 123, pady = 10)
     Creditcardbutton.grid(column = 0, row = 2)
     debitcardbutton = Button(checkoutdialog, text = "Debit Card", command = lambda: DebitCard(currentDrink,total), padx = 125, pady = 10)
     debitcardbutton.grid(column = 0, row = 3)
-    applepaybutton = Button(checkoutdialog, text = "Apple Samsung Pay", padx = 100, pady = 10)
+    applepaybutton = Button(checkoutdialog, text = "Apple Samsung Pay",padx = 100, pady = 10)
     applepaybutton.grid(column = 0, row = 4)
     rowindex = 1
     ordertitle = Label(checkoutdialog, text = "Your Order")
@@ -369,11 +370,66 @@ def checkoutDisplay(currentDrink, total):
         customtip.grid(column = 2, row = 6, sticky = E)
         Ctip = Text(DebitCardwindow, width = 5,height = 1)
         Ctip.grid(column = 3, row = 7, sticky = W)
-
-
         donebutton = Button(DebitCardwindow, text = "Done", command = lambda: Done(currentDrink, DebitCardwindow))
         donebutton.grid(column = 2, row = 8)
 
+    def Cash(currentDrink,total):
+        Cashwindow = Toplevel()
+        Cashwindow.geometry("1400x849")
+        global amountentered
+        ordertitle = Label(Cashwindow, text = "Your Order")
+        ordertitle.config(font = labelFont)
+        ordertitle.grid(column = 1, row = 0)
+        rowindex = 1
+        for x in currentDrink.cartList:
+            cart = Label(Cashwindow, text = x.get_cartText())
+            cart.grid(column = 1, row = rowindex)
+            rowindex +=1
+        totallabel = Label(Cashwindow, text = "$" + str(total))
+        rowindex +=1 
+        totallabel.grid(column = 1, row = rowindex)
+        amountgiven = Label(Cashwindow, text = 'Amount Given')
+        amountgiven.config(font = labelFont)
+        amountgiven.grid(column = 2, row = 0)
+        amount = Label(Cashwindow, text = "", height = 1, width = 6,bg = 'white')
+        amount.grid(column = 2, row = 3)
+        change = 0
+        def updateamount(number):
+            global amountentered
+            amountentered += str(number)
+            amount.config(text = amountentered)
+            ChangeLable.config(text ="Change = $" + str(int(amountentered) - total))
+            
+
+        numpad = Frame(Cashwindow)
+        numpad.grid(column = 2, row = 4)
+        num1 = Button(numpad, text = '1', width = 5, height = 3, command = lambda: updateamount("1"))
+        num1.grid(column = 0, row = 0)
+        num2 = Button(numpad, text = '2', width = 5, height = 3, command = lambda: updateamount("2"))
+        num2.grid(column = 1, row = 0)
+        num3 = Button(numpad, text = '3', width = 5, height = 3, command = lambda: updateamount("3"))
+        num3.grid(column = 2, row = 0)
+        num4 = Button(numpad, text = '4', width = 5, height = 3, command = lambda: updateamount("4"))
+        num4.grid(column = 0, row = 1)
+        num5 = Button(numpad, text = '5', width = 5, height = 3, command = lambda: updateamount("5"))
+        num5.grid(column = 1, row = 1)
+        num6 = Button(numpad, text = '6', width = 5, height = 3, command = lambda: updateamount("6"))
+        num6.grid(column = 2, row = 1)
+        num7 = Button(numpad, text = '7', width = 5, height = 3, command = lambda: updateamount("7"))
+        num7.grid(column = 0, row = 2)
+        num8 = Button(numpad, text = '8', width = 5, height = 3, command = lambda: updateamount("8"))
+        num8.grid(column = 1, row = 2)
+        num9 = Button(numpad, text = '9', width = 5, height = 3, command = lambda: updateamount("9"))
+        num9.grid(column = 2, row = 2)
+        num0 = Button(numpad, text = '0', width = 5, height = 3, command = lambda: updateamount("0"))
+        num0.grid(column = 1, row = 3)
+
+        ChangeLable = Label(Cashwindow, text ="Change = $" + str(change))
+        ChangeLable.config(font = labelFont)
+        ChangeLable.grid(column = 2, row = 7)
+
+        donebutton = Button(Cashwindow, text = "Done", command = lambda: Done(currentDrink, Cashwindow))
+        donebutton.grid(column = 2, row = 8)
     def Done(currentDrink,paymentwindow):
         count = 0
         global CartLabel
