@@ -187,6 +187,8 @@ def AddToCart(currentDrink):
     global checkoutShowing
     global subtotal
     global SubtotalLabel
+    global salesTax
+    salesTax = 1.065
     CartLabel = Label(CartFrame, text = currentDrink.GetCarttext())
     CartLabel.pack()
     cartRemove = Button(CartFrame, text = "Remove", command = lambda: removeFromCart(currentDrink))
@@ -229,6 +231,8 @@ def removeFromCart(currentDrink):
 #function checkout screen
 #***********************************************
 def checkoutDisplay(currentDrink, total):
+    lessSalesTax = total
+    total *= salesTax
     checkoutdialog = Toplevel() 
     checkoutdialog.geometry("1400x849")
     optionsLabel = Label(checkoutdialog,  text = "Payment Options")
@@ -250,9 +254,15 @@ def checkoutDisplay(currentDrink, total):
         cart = Label(checkoutdialog, text = x.get_cartText())
         cart.grid(column = 1, row = rowindex)
         rowindex +=1
-    totallabel = Label(checkoutdialog, text = "$" + str(total))
-    rowindex +=1 
-    totallabel.grid(column = 1, row = rowindex)
+    stlabel = Label(checkoutdialog, text = "Subtotal: $" + str(round(lessSalesTax,3)))
+    rowindex +=1
+    stlabel.grid(column = 1, row = rowindex)
+    salestaxlabel = Label(checkoutdialog, text="Sales Tax: $" + str(round(total - lessSalesTax,2)))
+    rowindex += 1
+    salestaxlabel.grid(column=1, row=rowindex)
+    totallabel = Label(checkoutdialog, text="Grand Total: $" + str(round(total,2)))
+    rowindex += 1
+    totallabel.grid(column=1, row=rowindex)
     #***********************************************
     #function for credit card screen
     #***********************************************
