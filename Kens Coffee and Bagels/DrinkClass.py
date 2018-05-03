@@ -89,43 +89,55 @@ class Drink:
 
     def GetCarttext(self):
         carttext = self.__name
-        carttext += "\t\t$" + str(self.__price)
+        carttext += "\t\t$" + str(self.__price) + "\t\t"
         if (self.__actual__WhiteCoco != self.__default__WhiteCoco):
-            carttext += "\nWhite Chocolate(" + str(self.__actual__WhiteCoco) + ")\t"
+            carttext += "\n-White Chocolate(" + str(self.__actual__WhiteCoco) + ")\t"
             if(self.__actual__WhiteCoco > self.__default__WhiteCoco):
                 temp =  self.__actual__WhiteCoco - self.__default__WhiteCoco
                 carttext += "$" +  str(temp*0.10)
                 self.__price += temp*0.1;
+            else:
+                carttext += "       "
         if (self.__actual__DarkCoco != self.__default__DarkCoco):
-            carttext += "\nDark Chocolate(" + str(self.__actual__DarkCoco) + ")\t\t"
+            carttext += "\n-Dark Chocolate(" + str(self.__actual__DarkCoco) + ")\t"
             if(self.__actual__DarkCoco > self.__default__DarkCoco):
                 temp =  self.__actual__DarkCoco - self.__default__DarkCoco
                 carttext += "$" +  str(temp*0.10)
-                self.__price += temp*0.1;   
+                self.__price += temp*0.1;
+            else:
+                carttext += "       "
         if (self.__actual__MilkCoco != self.__default__MilkCoco):
-            carttext += "\nMilk Chocolate(" + str(self.__actual__MilkCoco) + ")\t\t"
+            carttext += "\n-Milk Chocolate(" + str(self.__actual__MilkCoco) + ")\t"
             if(self.__actual__MilkCoco > self.__default__MilkCoco):
                 temp =  self.__actual__MilkCoco - self.__default__MilkCoco
                 carttext += "$" +  str(temp*0.10)
                 self.__price += temp*0.1;
+            else:
+                carttext += "       "
         if (self.__actual__Milk != self.__default__Milk):
-            carttext += "\nMilk(" + str(self.__actual__Milk) + ")\t\t\t"
+            carttext += "\n-Milk(" + str(self.__actual__Milk) + ")\t\t\t"
             if(self.__actual__Milk > self.__default__Milk):
                 temp =  self.__actual__Milk - self.__default__Milk
                 carttext += "$" +  str(temp*0.10)
-                self.__price += temp*0.1; 
+                self.__price += temp*0.1;
+            else:
+                carttext += "       "
         if (self.__actual__WhipCream != self.__default__WhipCream):
-            carttext += "\nWhip Cream(" + str(self.__actual__WhipCream) + ")\t\t"
+            carttext += "\n-Whip Cream(" + str(self.__actual__WhipCream) + ")\t\t"
             if(self.__actual__WhipCream > self.__default__WhipCream):
                 temp =  self.__actual__WhipCream - self.__default__WhipCream
                 carttext += "$" +  str(temp*0.10)
-                self.__price += temp*0.1; 
+                self.__price += temp*0.1;
+            else:
+                carttext += "       "
         if (self.__actual__Strawberry != self.__default__Strawberry):
-            carttext += "\nStrawberry(" + str(self.__actual__Strawberry) + ")\t\t"
+            carttext += "\n-Strawberry(" + str(self.__actual__Strawberry) + ")\t\t"
             if(self.__actual__Strawberry > self.__default__Strawberry):
                 temp =  self.__actual__Strawberry - self.__default__Strawberry
                 carttext += "$" +  str(temp*0.10)
-                self.__price += temp*0.1;    
+                self.__price += temp*0.1;
+            else:
+                carttext += "       "
         self.__cartText = carttext                                                    
         return carttext
 
