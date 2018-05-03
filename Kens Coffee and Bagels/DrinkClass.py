@@ -100,11 +100,12 @@ class Drink:
         return self.__actual__Strawberry
 
     def SizeCost(self):
-        # update size cost
-        if self.__size.get() == "medium":
+        # update drink size cost
+        if self.__size.get() == "Medium":
             self.__size_premium = 1
-        elif self.__size.get() == "large":
+        elif self.__size.get() == "Large":
             self.__size_premium = 2
+            
     def GetCarttext(self):
         self.SizeCost()
         carttext = self.__name + " ("+self.__size.get()+")"

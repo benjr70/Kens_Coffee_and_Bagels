@@ -71,20 +71,21 @@ def AddOnbuttons(currentDrink):
         addonButtonsshown = True
         rowVar = 0
 
-        DecalfCheck = Checkbutton(AddOnsFrame, variable=currentDrink.get_decalf())
-        DecalfCheck.grid(column=0, row=rowVar, pady=10)
-        DecalfLabel = Label(AddOnsFrame, text="Decalf", padx=20)
-        DecalfLabel.grid(column=1, row=rowVar, sticky=W)
+        DecafFrame = Frame(AddOnsFrame)
+
+        Checkbutton(DecafFrame, variable=currentDrink.get_decalf()).grid(column=0, row=rowVar, pady=10)
+        Label(DecafFrame, text="Decaf", padx=20).grid(column=1, row=rowVar, sticky=W)
+        DecafFrame.grid(column=1, row=rowVar)
         rowVar += 1
 
         #sizes options using radio button
         global v
         v = StringVar()
-        v.set("small") #init
+        v.set("Small") #init
         currentDrink.set_size(v)
-        SizeOptions = [("small", "small"),
-                       ("medium", "medium"),
-                       ("large", "large")]
+        SizeOptions = [("Small", "Small"),
+                       ("Medium", "Medium"),
+                       ("Large", "Large")]
         #frame for sizes
         sizeFrame = Frame(AddOnsFrame)
         Label(sizeFrame, text="Size").pack()
@@ -212,6 +213,7 @@ def AddOnbuttons(currentDrink):
             StrawAdd.grid_forget()
             AddToCartButton.grid_forget()
             sizeFrame.grid_forget()
+            DecafFrame.grid_forget()
             AddToCart(currentDrink)
 
         AddToCartButton = Button(AddOnsFrame, text="Add To Cart", padx=200, pady=10,
@@ -349,7 +351,7 @@ def checkoutDisplay(currentDrink, total):
         Noreceipt = Button(CreditCard, text="No Receipt", width=10, height=3)
         Noreceipt.grid(column=2, row=3, sticky=E)
 
-        emaillable = Label(CreditCard, text="e-mail")
+        emaillable = Label(CreditCard, text="Email")
         emaillable.grid(column=2, row=4, sticky=W)
         emailTB = Text(CreditCard, width=115, height=1)
         emailTB.grid(column=2, row=4, sticky=E)
@@ -533,14 +535,14 @@ def coffeeSelect(Name, price, WhiteCoco, DarkCoco, MilkCoco, Milk, WhipCream, St
 mocha = Button(coffeeFrame, text="Mocha", padx=210, pady=10,
                command=lambda: coffeeSelect("Mocha", 3.50, 1, 2, 0, 1, 1, 0))
 mocha.pack(expand=YES, fill=X, side=TOP)
-latte = Button(coffeeFrame, text="latte", pady=10, command=lambda: coffeeSelect("Latte", 3.50, 0, 2, 0, 1, 1, 0))
+latte = Button(coffeeFrame, text="Latte", pady=10, command=lambda: coffeeSelect("Latte", 3.50, 0, 2, 0, 1, 1, 0))
 latte.pack(expand=YES, fill=X, side=TOP)
 HotCoco = Button(coffeeFrame, text="Hot Chocolate", pady=10,
                  command=lambda: coffeeSelect("Hot Chocolate", 2.0, 0, 0, 0, 1, 1, 0))
 HotCoco.pack(expand=YES, fill=X, side=TOP)
-ChiTea = Button(coffeeFrame, text="ChiTea", pady=10, command=lambda: coffeeSelect("ChiTea", 2.50, 0, 2, 0, 1, 1, 0))
+ChiTea = Button(coffeeFrame, text="Chai Tea", pady=10, command=lambda: coffeeSelect("Chai Tea", 2.50, 0, 2, 0, 1, 1, 0))
 ChiTea.pack(expand=YES, fill=X, side=TOP)
 
-root.title("Kens Coffee and Bagels");
+root.title("Ken's Coffee and Bagels");
 root.geometry("1400x849");
 mainloop()
